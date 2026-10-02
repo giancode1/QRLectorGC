@@ -10,20 +10,25 @@ Lector de códigos QR para macOS que vive en la **barra de menú**. Haz clic en 
 
 La app no tiene ícono en el Dock; para salir usa el menú del ícono › *Salir*.
 
-## Requisitos
+## Instalar (sin Xcode)
 
-- macOS 13 o superior.
-- Swift 5.9+ (Xcode o Command Line Tools).
-- Permiso de **Grabación de pantalla** para la app (macOS lo pide en el primer scan).
+Requisitos: **macOS 13 o superior** (Intel o Apple Silicon). No hace falta Xcode ni Swift.
 
-## Compilar y abrir
+1. Descarga [`QRLectorGC-macOS.zip`](https://github.com/giancode1/QRLectorGC/releases/latest/download/QRLectorGC-macOS.zip) desde [Releases](https://github.com/giancode1/QRLectorGC/releases/latest).
+2. Descomprímelo y mueve `QRLectorGC.app` a *Aplicaciones*.
+3. La primera vez macOS la bloqueará porque no está notarizada por Apple: clic derecho sobre la app › *Abrir* (en macOS 15: *Ajustes del Sistema › Privacidad y seguridad › Abrir de todos modos*). También sirve en Terminal: `xattr -dr com.apple.quarantine /Applications/QRLectorGC.app`.
+4. Al primer escaneo, macOS pide el permiso de **Grabación de pantalla**: concédelo en *Ajustes del Sistema › Privacidad y seguridad › Grabación de pantalla*.
+
+## Compilar desde el código
+
+Requisitos: macOS 13+ y **Xcode o Command Line Tools** (Swift 5.9+).
 
 ```bash
 ./build.sh
 open QRLectorGC.app
 ```
 
-`build.sh` firma la app con tu certificado *Apple Development* si lo encuentra (así macOS recuerda el permiso de pantalla entre compilaciones). Sin certificado usa firma ad-hoc y habrá que volver a otorgar el permiso en cada compilación.
+`build.sh` firma la app con tu certificado *Apple Development* si lo encuentra (así macOS recuerda el permiso de pantalla entre compilaciones) y, si no, usa firma ad-hoc.
 
 ## Notas
 
